@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:53:47 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/25 16:30:25 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:31:08 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ delete i;
 
 std::cout << "\narray of animals test :\n" << std::endl;
 
-const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+const Animal *animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
 for ( int i(0) ; i < 4; i++ )
 {
 	std::cout << "\n" << std::endl;
@@ -65,12 +65,10 @@ catTest = cattmp1;
 cattmp2 = cattmp2;
 
 /*
-just to compare with ex02
+here the abstract class can't be instantiated
 */
-// std::cout << "\nTEST ANIMAL IS HERE\n" << std::endl;
 // Animal *a = new Animal();
 // delete a;
-// std::cout << "\nTEST ANIMAL END\n" << std::endl;
 
 std::cout << "\nthe end\n" << std::endl;
 return 0;
