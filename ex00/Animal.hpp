@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:35:06 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/23 13:52:43 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:17:55 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ class Animal
 protected:
 	std::string type;
 public:
-	Animal(/* args */);
-	Animal(const Animal obj);
-	~Animal();
-	std::string getType();
-	void makeSound() const;
+	Animal();
+	Animal(const Animal &obj);
+	virtual ~Animal();
+	Animal &operator=(const Animal &rhs);
+	std::string getType() const;
+	virtual void makeSound() const;
 };
 
 

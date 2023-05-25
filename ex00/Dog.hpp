@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:33:33 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/23 13:37:38 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:10:48 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 class Dog : public Animal
 {
-private:
-	/* data */
 public:
-	Dog(/* args */);
+	Dog();
+	Dog(const Dog &obj);
 	~Dog();
+	Dog &operator=(const Dog &rhs);
+	void makeSound() const;
 };
 
 

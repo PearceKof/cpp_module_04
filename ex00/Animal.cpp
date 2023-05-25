@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:35:26 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/23 13:53:42 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:08:00 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,33 @@
 
 Animal::Animal(): type("")
 {
+	std::cout << "[ Animal ] Default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &rhs)
+Animal::Animal(const Animal &obj)
 {
-	this->type = rhs.type;
+	std::cout << "[ Animal ] Copy constructor called" << std::endl;
+	this->type = obj.type;
 }
 
 Animal::~Animal()
 {
+	std::cout << "[ Animal ] Destructor called" << std::endl;
 }
 
-std::string Animal::getType()
+Animal &Animal::operator=(const Animal &rhs)
 {
-	return (this->type);
+	std::cout << "[ Animal ] Copy assignement operator called" << std::endl;
+	this->type = rhs.type;
+	return (*this);
+}
+
+std::string Animal::getType() const
+{
+	return (type);
 }
 
 void Animal::makeSound() const
 {
-	if (type == "Cat")
-	{
-		std::cout << "miaou" << std::endl;
-	}
-	else if (type == "Dog")
-	{
-		std::cout << "Wouf" << std::endl;
-	}
-	else
-	{
-		std::cout << "* Uncanny sound *" << std::endl;
-	}
+	std::cout << "* random animal sound *" << std::endl;
 }
