@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:53:47 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/25 16:48:48 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:04:52 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
 	const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
 	for ( int i(0) ; i < 4; i++ )
 	{
-		std::cout << "\n" << std::endl;
+		std::cout << "\nthe animal is a " << animals[i]->getType() << "\n" << std::endl;
 		animals[i]->makeSound();
 		delete animals[i];
 	}
@@ -47,7 +47,6 @@ int main()
 	Dog dogtmp1(dogTest);
 	Dog dogtmp2 = dogTest;
 	dogTest = dogtmp1;
-	dogtmp2 = dogtmp2;
 
 	//the same test but with cat
 
@@ -62,7 +61,6 @@ int main()
 	Cat cattmp1(catTest);
 	Cat cattmp2 = catTest;
 	catTest = cattmp1;
-	cattmp2 = cattmp2;
 
 	/*
 	just to compare with ex02
