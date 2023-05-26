@@ -40,7 +40,7 @@ Character& Character::operator=(Character const & rhs)
 
 Character::~Character()
 {
-    //std::cout << "Character " << this->name << " destroyed" << std::endl;
+    // std::cout << "Character " << this->name << " destroyed" << std::endl;
     for (int i(0) ; i < 4 ; i++)
     {
         if (this->inventory[i])
@@ -50,6 +50,8 @@ Character::~Character()
 
 void    Character::equip(AMateria* m)
 {
+    if (m == NULL)
+        return ;
     for (int i(0) ; i < 4 ; i++)
     {
         if (this->inventory[i] == NULL)
@@ -58,13 +60,16 @@ void    Character::equip(AMateria* m)
             //std::cout << "Character " << this->name << " equipped with " << m->getType() << std::endl;
             return;
         }
-        // std::cout << "Character " << this->name << " can't equip " << m->getType() << std::endl;
     }
 }
 
-void    Character::unequip( int idx )
+void    Character::unequip(int idx)
 {
-    if (this->inventory[idx])
+    if (idx > 3 or idx < 0)
+    {
+        std::cout << "Invalid index. Must be between 0 and 3." << std::endl;
+    }
+    else if (this->inventory[idx])
     {
         delete this->inventory[idx];
         this->inventory[idx] = NULL;
@@ -74,9 +79,13 @@ void    Character::unequip( int idx )
         std::cout << "Character " << this->name << " can't unequip" << std::endl;
 }
 
-void    Character::use( int idx, ICharacter& target )
+void    Character::use(int idx, ICharacter& target)
 {
-    if (this->inventory[idx])
+    if (idx > 3 or idx < 0)
+    {
+        std::cout << "Invalid index. Must be between 0 and 3." << std::endl;
+    }
+    else if (this->inventory[idx])
     {
         this->inventory[idx]->use(target);
         //std::cout << "Character " << this->name << " uses " << this->inventory[idx]->getType() << std::endl;

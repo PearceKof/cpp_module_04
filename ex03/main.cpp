@@ -20,6 +20,8 @@
 
 int main()
 {
+	std::cout << "Subject tests :" << std::endl;
+
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -36,6 +38,14 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	std::cout << "some more tests :" << std::endl;
+
+	me->use(5, *bob);
+	me->use(0, *bob);
+	me->unequip(0);
+	me->use(0, *bob);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
 	delete bob;
 	delete me;
 	delete src;

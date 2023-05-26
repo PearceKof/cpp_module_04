@@ -6,7 +6,7 @@
 /*   By: blaurent <blaurent@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:53:47 by blaurent          #+#    #+#             */
-/*   Updated: 2023/05/25 16:48:40 by blaurent         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:12:29 by blaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main()
 	Dog dogtmp1(dogTest);
 	Dog dogtmp2 = dogTest;
 	dogTest = dogtmp1;
-	dogtmp2 = dogtmp2;
 
 	//the same test but with cat
 
@@ -62,7 +61,6 @@ int main()
 	Cat cattmp1(catTest);
 	Cat cattmp2 = catTest;
 	catTest = cattmp1;
-	cattmp2 = cattmp2;
 
 	/*
 	here the abstract class can't be instantiated

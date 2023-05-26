@@ -22,6 +22,7 @@ AMateria::AMateria(std::string const &type) : type(type)
 
 AMateria::AMateria(AMateria const & obj) : type(obj.type)
 {
+	*this = obj;
 }
 
 AMateria::~AMateria()
