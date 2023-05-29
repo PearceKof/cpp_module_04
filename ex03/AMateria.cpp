@@ -20,7 +20,7 @@ AMateria::AMateria(std::string const &type) : type(type)
 {
 }
 
-AMateria::AMateria(AMateria const & obj) : type(obj.type)
+AMateria::AMateria(AMateria const & obj)
 {
 	*this = obj;
 }
@@ -31,8 +31,9 @@ AMateria::~AMateria()
 
 AMateria &AMateria::operator=(const AMateria & rhs)
 {
-	this->type = rhs.type;
-	return (*this);
+	if(this != &rhs)
+		this->type = rhs.type;
+	return(*this);
 }
 
 std::string const & AMateria::getType() const

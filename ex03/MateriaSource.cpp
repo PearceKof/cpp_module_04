@@ -55,14 +55,29 @@ AMateria* MateriaSource::getMateria(std::string const & type)
 
 void	MateriaSource::learnMateria(AMateria* m)
 {
-	for(int i(0) ; i < 4 ; i++)
+	if (!m)
+	{
+		std::cout << "Invalid materia." << std::endl;
+		return ;
+	}
+	int i;
+	for(i = 0 ; i < 4 ; i++)
 	{
 		if(materias[i] == NULL)
 		{
-			materias[i] = m;
-			return;
+			materias[i] = m->clone();
+			if (m)
+				delete m;
+			return ;
 		}
 	}
+	if (i == 4)
+	{
+		std::cout << "Can't learn more Materia." << std::endl;
+		return ;
+	}
+	if (m)
+		delete m;
 }
 
 AMateria*   MateriaSource::createMateria(std::string const & type)

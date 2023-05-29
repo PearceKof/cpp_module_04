@@ -18,24 +18,38 @@ Character::Character(std::string const & name) : name(name)
     {
         this->inventory[i] = NULL;
     }
-    //std::cout << "Character " << this->name << " created" << std::endl;
+    std::cout << "Character " << this->name << " created" << std::endl;
 }
 
 Character::Character(Character const & src) : name(src.name)
 {
+	for (int i(0) ; i < 4 ; i++)
+    {
+        this->inventory[i] = NULL;
+    }
     *this = src;
-    //std::cout << "Character " << this->name << " created" << std::endl;
+    std::cout << "Character " << this->name << " created" << std::endl;
 }
 
 Character& Character::operator=(Character const & rhs)
 {
     if (this != &rhs)
     {
-        this->name = rhs.name;
+        this->name = rhs.getName();
         for (int i(0) ; i < 4 ; i++)
-            this->inventory[i] = rhs.inventory[i];
+        {
+        	if (this->inventory[i])
+        		delete this->inventory[i];
+    	}
+        for (int i(0) ; i < 4 ; i++)
+		{
+			if (rhs.inventory[i])
+            	this->inventory[i] = rhs.inventory[i]->clone();
+			else
+				this->inventory[i] = NULL;
+		}
     }
-    return *this;
+    return (*this);
 }
 
 Character::~Character()
@@ -50,17 +64,18 @@ Character::~Character()
 
 void    Character::equip(AMateria* m)
 {
-    if (m == NULL)
+    if (!m)
         return ;
     for (int i(0) ; i < 4 ; i++)
     {
         if (this->inventory[i] == NULL)
         {
             this->inventory[i] = m;
-            //std::cout << "Character " << this->name << " equipped with " << m->getType() << std::endl;
+            std::cout << "Character " << this->name << " equipped " << m->getType() << " at " << i << std::endl;
             return;
         }
     }
+    std::cout << "Character " << this->name << " has a full inventory." << std::endl;
 }
 
 void    Character::unequip(int idx)
@@ -71,7 +86,6 @@ void    Character::unequip(int idx)
     }
     else if (this->inventory[idx])
     {
-        delete this->inventory[idx];
         this->inventory[idx] = NULL;
         std::cout << "Character " << this->name << " unequipped" << std::endl;
     }
@@ -88,7 +102,6 @@ void    Character::use(int idx, ICharacter& target)
     else if (this->inventory[idx])
     {
         this->inventory[idx]->use(target);
-        //std::cout << "Character " << this->name << " uses " << this->inventory[idx]->getType() << std::endl;
     }
     else
         std::cout << "There is nothing at this index in the inventory." << std::endl;

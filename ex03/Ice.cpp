@@ -12,7 +12,7 @@
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("ice")
+Ice::Ice() : AMateria("ice"), ptr(NULL)
 {
 }
 
@@ -38,5 +38,5 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "\033[1;34m" << "* shoots an ice bolt at " << target.getName() << " *" << "\033[0m" << std::endl;
 }

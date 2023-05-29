@@ -17,6 +17,8 @@
 
 class Ice : public AMateria
 {
+private:
+	Ice *ptr;
 public:
 	Ice();
 	~Ice();
