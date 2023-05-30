@@ -12,7 +12,7 @@
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("ice"), ptr(NULL)
+Ice::Ice() : AMateria("ice")
 {
 }
 
